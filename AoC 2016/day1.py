@@ -16,6 +16,8 @@ class Position(object):
         self.y += other.y
         return self
 
+    __radd__ = __add__
+
     def __str__(self):
         "Define the textual representation of a Position"
         return "Position(x=%d, y=%d)" % (self.x, self.y)
@@ -56,27 +58,6 @@ def getBlocksAway(instrs):
 
     current_location_tuple = (current_location.x, current_location.y)
     return current_location_tuple
-
-
-# def getBlocksAway(instrs):
-#     x, y = 0, 0
-#     direction = 0
-
-#     for instr in instrs:
-#         direction = changeDirection(instr[0], direction)
-
-#         distance = int(instr[1:])
-
-#         if direction == 0:
-#             y += distance
-#         elif direction == 1:
-#             x += distance
-#         elif direction == 2:
-#             y -= distance
-#         else:
-#             x -= distance
-
-#     return (x, y)
 
 
 # Part 2
