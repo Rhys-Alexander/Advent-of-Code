@@ -4,6 +4,7 @@ def getInput():
     return inpt
 
 
+# Part 1
 def solveCaptcha(inpt):
     total = 0
     list_length = len(inpt)
@@ -15,6 +16,7 @@ def solveCaptcha(inpt):
     return total
 
 
+# Part 2
 def solveCaptcha2(inpt):
     total = 0
     list_length = len(inpt)
@@ -24,6 +26,3 @@ def solveCaptcha2(inpt):
             total += int(x)
 
     return total
-
-
-print(solveCaptcha2(getInput()))
