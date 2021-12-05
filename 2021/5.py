@@ -23,3 +23,5 @@ class Position(object):
         return "Position(x=%d, y=%d)" % (self.x, self.y)
 
     __repr__ = __str__
+    
+#     test
