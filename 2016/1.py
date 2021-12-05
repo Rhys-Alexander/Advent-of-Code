@@ -11,7 +11,7 @@ class Position(object):
         return Position(self.x + other.x, self.y + other.y)
 
     def __iadd__(self, other):
-        "In-place add += updates the current instance."
+        # "In-place add += updates the current instance."
         self.x += other.x
         self.y += other.y
         return self
@@ -19,7 +19,7 @@ class Position(object):
     __radd__ = __add__
 
     def __str__(self):
-        "Define the textual representation of a Position"
+        # "Define the textual representation of a Position"
         return "Position(x=%d, y=%d)" % (self.x, self.y)
 
     __repr__ = __str__
