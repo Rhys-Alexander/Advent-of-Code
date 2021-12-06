@@ -539,46 +539,17 @@ class Position(object):
 
 
 # Part 1
-def getOverlapsStraight():
+def getOverlapsStraight(instrs):
     visited = set()
     overlaps = set()
-    inpt = getInput()
-    inpt = [
+    instrs = [
         coods
-        for coods in inpt
+        for coods in instrs
         if (coods[0][0] == coods[1][0] or coods[0][1] == coods[1][1])
     ]
 
-    for coods in inpt:
-        x_or_y = 0 if coods[0][0] != coods[1][0] else 1
-        small_cood, big_cood = (
-            (coods[0], coods[1])
-            if coods[0][x_or_y] < coods[1][x_or_y]
-            else (coods[1], coods[0])
-        )
-        step = (0, 1) if x_or_y == 1 else (1, 0)
-
-        current_location = Position(small_cood)
-        for i in range(big_cood[x_or_y] - small_cood[x_or_y] + 1):
-            if (current_location.getCood() in visited) and (
-                current_location.getCood() not in overlaps
-            ):
-                overlaps.add(current_location.getCood())
-            else:
-                visited.add(current_location.getCood())
-            current_location += step
-
-    return len(overlaps)
-
-
-# Part 2
-def getOverlaps():
-    visited = set()
-    overlaps = set()
-    inpt = getInput()
-    for coods in inpt:
-        cood0, cood1 = coods[0], coods[1]
-        x_diff, y_diff = (cood1[0] - cood0[0]), (cood1[1] - cood0[1])
+    for coods in instrs:
+        x_diff, y_diff = (coods[1][0] - coods[0][0]), (coods[1][1] - coods[0][1])
         getStep = lambda diff: (abs(diff) % (diff - 1)) if diff != 2 else 1
         step = (getStep(x_diff), getStep(y_diff))
 
@@ -588,10 +559,35 @@ def getOverlaps():
             else visited.add(location.getCood())
         )
 
-        current_location = Position(cood0)
+        current_location = Position(coods[0])
         sortLocation(current_location)
 
-        while current_location.getCood() != cood1:
+        while current_location.getCood() != coods[1]:
+            current_location += step
+            sortLocation(current_location)
+
+    return len(overlaps)
+
+
+# Part 2
+def getOverlaps(instrs):
+    visited = set()
+    overlaps = set()
+    for coods in instrs:
+        x_diff, y_diff = (coods[1][0] - coods[0][0]), (coods[1][1] - coods[0][1])
+        getStep = lambda diff: (abs(diff) % (diff - 1)) if diff != 2 else 1
+        step = (getStep(x_diff), getStep(y_diff))
+
+        sortLocation = (
+            lambda location: overlaps.add(location.getCood())
+            if (location.getCood() in visited) and (location.getCood() not in overlaps)
+            else visited.add(location.getCood())
+        )
+
+        current_location = Position(coods[0])
+        sortLocation(current_location)
+
+        while current_location.getCood() != coods[1]:
             current_location += step
             sortLocation(current_location)
 
