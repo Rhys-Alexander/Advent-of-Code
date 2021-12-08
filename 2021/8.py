@@ -199,7 +199,6 @@ def getInput():
     bgce agefcbd egbcfa eg fadgb bfcae dfbcae egfab gae fdcega | age gafcbe eacfbg gea
     fgacde gfaedb ebacf gc gdfc dcbeafg fadge gec bdcgea cgfea | fdagcbe gfdc aefgcbd gc
     gb acfdgb bga aedgf bafdg abdfecg gacfeb bgdc bfcad fcedba | fgaecbd dabcf bcdg bg"""
-    # inpt = "acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf"
     inpt = [
         [[z for z in y.split()] for y in x.split(" | ")] for x in inpt.split("\n    ")
     ]
