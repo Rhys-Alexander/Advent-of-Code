@@ -211,46 +211,28 @@ def get1478(inpt):
     return sum([len([1 for y in x[1] if len(y) in [2, 3, 4, 7]]) for x in inpt])
 
 
-# Part 2
 def getVals(inpt):
-    digit_segs = [
-        "abcefg",
-        "cf",
-        "acdeg",
-        "acdfg",
-        "bcdf",
-        "abdfg",
-        "abdefg",
-        "acf",
-        "abcdefg",
-        "abcdfg",
-    ]
-    freq_dict = {4: "e", 6: "b", 7: "g", 8: "c", 9: "f"}
-    total = 0
-    for line in inpt:
-        unqs = dict()
-        for segment in line[0]:
-            if len(segment) in (2, 3, 4, 7):
-                unqs[len(segment)] = set([x for x in segment])
+    sums = {
+        42: "0",
+        17: "1",
+        34: "2",
+        39: "3",
+        30: "4",
+        37: "5",
+        41: "6",
+        25: "7",
+        49: "8",
+        45: "9",
+    }
+    return sum(
+        int(
+            "".join(
+                sums.get(sum(sum(segment.count(x) for segment in line[0]) for x in seg))
+                for seg in line[1]
+            )
+        )
+        for line in inpt
+    )
 
-        cipher = {
-            "a": list(unqs.get(3) - unqs.get(2))[0],
-            "d": [
-                x
-                for x in (unqs.get(4) - unqs.get(2))
-                if sum(segment.count(x) for segment in line[0]) == 7
-            ][0],
-        }
-        letters = [x for x in "abcdefg" if x not in cipher.values()]
 
-        for letter in letters:
-            freq = sum(segment.count(letter) for segment in line[0])
-            cipher[freq_dict.get(freq)] = letter
-
-        ciphered_segs = [set([cipher.get(x) for x in seg]) for seg in digit_segs]
-
-        digit = ""
-        for seg in line[1]:
-            digit += str(ciphered_segs.index(set(seg)))
-        total += int(digit)
-    return total
+print(getVals(getInput()))
