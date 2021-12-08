@@ -211,6 +211,7 @@ def get1478(inpt):
     return sum([len([1 for y in x[1] if len(y) in [2, 3, 4, 7]]) for x in inpt])
 
 
+# Part 2
 def getVals(inpt):
     sums = {
         42: "0",
@@ -233,6 +234,3 @@ def getVals(inpt):
         )
         for line in inpt
     )
-
-
-print(getVals(getInput()))
