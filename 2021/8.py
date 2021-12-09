@@ -211,7 +211,7 @@ def get1478(inpt):
 
 
 # Part 2
-def getVals(inpt):
+def getSumOfVals(inpt):
     sums = {
         42: "0",
         17: "1",
