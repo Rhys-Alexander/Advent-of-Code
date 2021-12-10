@@ -1,21 +1,18 @@
+from inpt import day1
+
+
 # Part 1
 def getNumTimesIncreased(inpt):
-    increased = 0
-    for i, x in enumerate(inpt[1:]):
-        if x > inpt[i]:
-            increased += 1
+    return sum(1 for x, y in zip(inpt[1:], inpt) if x > y)
 
-    return increased
+
+print(getNumTimesIncreased(day1()))
 
 
 # Part 2
 def getNumTimesBandIncreased(inpt):
-    increased = 0
-    for i, x in enumerate(inpt[1:-2]):
+    bands = [sum([inpt[i], inpt[i + 1], inpt[i + 2]]) for i in range(len(inpt) - 2)]
+    return sum(1 for x, y in zip(bands[1:], bands) if x > y)
 
-        if (inpt[1:][i] + inpt[1:][i + 1] + inpt[1:][i + 2]) > (
-            inpt[i] + inpt[i + 1] + inpt[i + 2]
-        ):
-            increased += 1
 
-    return increased
+print(getNumTimesBandIncreased(day1()))
