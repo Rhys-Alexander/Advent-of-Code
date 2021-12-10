@@ -1,20 +1,19 @@
-# Part 1
-def getSumOfPosition(inpt):
-    horizontal = 0
-    depth = 0
-    for x, y in inpt:
-        if x == "forward":
-            horizontal += y
-        elif x == "down":
-            depth += y
-        else:
-            depth -= y
+from inpt import day2
 
+
+# Part 1
+def sumPosition(inpt):
+    direction = {"up": -1, "down": 1}
+    horizontal = sum(y for x, y in inpt if x == "forward")
+    depth = sum(y * direction[x] for x, y in inpt if x != "forward")
     return horizontal * depth
 
 
+print(sumPosition(day2()))
+
+
 # Part 2
-def getAimedPosition(inpt):
+def sumAimedPosition(inpt):
     horizontal = 0
     depth = 0
     aim = 0
@@ -28,3 +27,6 @@ def getAimedPosition(inpt):
             aim -= y
 
     return horizontal * depth
+
+
+print(sumAimedPosition(day2()))
