@@ -1,3 +1,4 @@
+from inpt import day9
 from math import prod
 
 
@@ -20,6 +21,9 @@ def sumLowPoints(inpt):
         )
         for line_i, line in enumerate(inpt[:-1])
     )
+
+
+print(sumLowPoints(day9()))
 
 
 # Part 2
@@ -71,3 +75,6 @@ def sum3LargestBasins(inpt):
         basins.append(len(basin_points))
 
     return prod(sorted(basins)[-3:])
+
+
+print(sum3LargestBasins(day9()))

@@ -1,8 +1,9 @@
+from inpt import day4
+
+
 def getFinalScore(selected_board):
     board, called = selected_board
-    board_numbers = []
-    for row in board:
-        board_numbers.extend(row)
+    board_numbers = [item for row in board for item in row]
     uncalled = sum([num for num in board_numbers if num not in called])
     final_score = called[-1] * uncalled
     return final_score
@@ -24,6 +25,9 @@ def checkBoardsForWin(inpt):
                     col.append(row[i])
                 if all(num in called for num in col):
                     return board, called
+
+
+print(getFinalScore(checkBoardsForWin(day4())))
 
 
 # Part 2
@@ -54,3 +58,6 @@ def checkBoardsForLoss(inpt):
                 new_boards.append(board)
 
         boards = new_boards
+
+
+print(getFinalScore(checkBoardsForLoss(day4())))

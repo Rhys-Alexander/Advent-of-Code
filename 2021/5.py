@@ -1,3 +1,6 @@
+from inpt import day5
+
+
 class Position(object):
     def __init__(self, cood):
         x, y = cood
@@ -9,19 +12,12 @@ class Position(object):
         return Position((self.x + tup_x, self.y + tup_y))
 
     def __iadd__(self, tup):
-        # Works for +=
         tup_x, tup_y = tup
         self.x += tup_x
         self.y += tup_y
         return self
 
     __radd__ = __add__
-
-    def __str__(self):
-        "Define the textual representation of a Position"
-        return "Position(x=%d, y=%d)" % (self.x, self.y)
-
-    __repr__ = __str__
 
     def getCood(self):
         return (self.x, self.y)
@@ -58,6 +54,9 @@ def getOverlapsStraight(instrs):
     return len(overlaps)
 
 
+print(getOverlapsStraight(day5()))
+
+
 # Part 2
 def getOverlaps(instrs):
     visited = set()
@@ -81,3 +80,6 @@ def getOverlaps(instrs):
             sortLocation(current_location)
 
     return len(overlaps)
+
+
+print(getOverlaps(day5()))

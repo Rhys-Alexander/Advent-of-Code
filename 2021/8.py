@@ -1,10 +1,16 @@
+from inpt import day8
+
+
 # Part 1
 def get1478(inpt):
     return sum([len([1 for y in x[1] if len(y) in [2, 3, 4, 7]]) for x in inpt])
 
 
+print(get1478(day8()))
+
+
 # Part 2
-def getSumOfVals(inpt):
+def sumVals(inpt):
     sums = {
         42: "0",
         17: "1",
@@ -26,3 +32,6 @@ def getSumOfVals(inpt):
         )
         for line in inpt
     )
+
+
+print(sumVals(day8()))

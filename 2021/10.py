@@ -7,7 +7,7 @@ def corrupted(line):
     for char in line:
         if char in chars.values():
             stack.append(char)
-        elif stack.pop() != chars.get(char):
+        elif stack.pop() != chars[char]:
             return char
     return False
 
@@ -15,7 +15,10 @@ def corrupted(line):
 # Part 1
 def getErrorScore(inpt):
     scores = {")": 3, "]": 57, "}": 1197, ">": 25137}
-    return sum(scores.get(corrupted(line)) for line in inpt if corrupted(line))
+    return sum(scores[corrupted(line)] for line in inpt if corrupted(line))
+
+
+print(getErrorScore(day10()))
 
 
 # Part 2
@@ -32,7 +35,10 @@ def completeLines(inpt):
                 stack.pop()
         score = 0
         for char in reversed(stack):
-            score = score * 5 + chars.get(char)
+            score = score * 5 + chars[char]
         scores.append(score)
 
     return sorted(scores)[len(scores) // 2]
+
+
+print(completeLines(day10()))

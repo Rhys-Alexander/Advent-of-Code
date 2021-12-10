@@ -1,3 +1,6 @@
+from inpt import day3
+
+
 # Part 1
 def getPowerConsumption(bins):
     bin_length = len(bins[0])
@@ -14,6 +17,9 @@ def getPowerConsumption(bins):
 
     power_consumption = int(gamma_rate, 2) * int(epsilon_rate, 2)
     return power_consumption
+
+
+print(getPowerConsumption(day3()))
 
 
 # Part 2
@@ -38,8 +44,11 @@ def getSingleBin(common, bins):
     return bins[0]
 
 
-def getLifeSupportRating():
-    o2_gen_rating = getSingleBin(True)
-    co2_scrub_rating = getSingleBin(False)
+def getLifeSupportRating(inpt):
+    o2_gen_rating = getSingleBin(True, inpt)
+    co2_scrub_rating = getSingleBin(False, inpt)
     life_support_rating = int(o2_gen_rating, 2) * int(co2_scrub_rating, 2)
     return life_support_rating
+
+
+print(getLifeSupportRating(day3()))
