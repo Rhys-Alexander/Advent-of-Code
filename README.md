@@ -1,2 +1,5 @@
-# Advent-of-Code
-My solutions in Python to the incredible advent of code problems
+# Advent of Code
+
+Python solutions to the incredible [Advent of Code](https://adventofcode.com) problems.
+
+Please go check out [Advent of Code](https://adventofcode.com) and join in!
