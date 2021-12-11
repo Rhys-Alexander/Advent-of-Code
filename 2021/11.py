@@ -6,7 +6,7 @@ def sumFlashes(inpt, steps):
     for line in inpt:
         line.append(0)
     inpt.insert(len(inpt), [0 for _ in inpt[0]])
-
+    incs = (-1, 0, 1)
     flashes = 0
     for _ in range(steps):
         for line_i, line in enumerate(inpt):
@@ -20,8 +20,8 @@ def sumFlashes(inpt, steps):
                 for num_i, num in enumerate(line[:-1]):
                     if num > 9 and (line_i, num_i) not in flashed:
                         flashed.append((line_i, num_i))
-                        for i in (-1, 0, 1):
-                            for n in (-1, 0, 1):
+                        for i in incs:
+                            for n in incs:
                                 inpt[line_i + i][num_i + n] += 1
 
         for line_i, num_i in flashed:
@@ -39,7 +39,7 @@ def getSynchronizedStep(inpt):
     for line in inpt:
         line.append(0)
     inpt.insert(len(inpt), [0 for _ in inpt[0]])
-
+    incs = (-1, 0, 1)
     step = 0
     while sum(x for line in inpt[:-1] for x in line[:-1]) != 0:
         step += 1
@@ -54,13 +54,12 @@ def getSynchronizedStep(inpt):
                 for num_i, num in enumerate(line[:-1]):
                     if num > 9 and (line_i, num_i) not in flashed:
                         flashed.append((line_i, num_i))
-                        for i in (-1, 0, 1):
-                            for n in (-1, 0, 1):
+                        for i in incs:
+                            for n in incs:
                                 inpt[line_i + i][num_i + n] += 1
 
         for line_i, num_i in flashed:
             inpt[line_i][num_i] = 0
-
     return step
 
 
