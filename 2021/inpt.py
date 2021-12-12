@@ -3568,3 +3568,37 @@ def day11():
     4723888888"""
     inpt = [[int(num) for num in line] for line in inpt.split("\n    ")]
     return inpt
+
+
+def day12():
+    from collections import defaultdict
+
+    inpt = """OU-xt
+    hq-xt
+    br-HP
+    WD-xt
+    end-br
+    start-OU
+    hq-br
+    MH-hq
+    MH-start
+    xt-br
+    end-WD
+    hq-start
+    MH-br
+    qw-OU
+    hm-WD
+    br-WD
+    OU-hq
+    xt-MH
+    qw-MH
+    WD-qw
+    end-qw
+    qw-xt"""
+    cave_set = defaultdict(list)
+    for line in inpt.split("\n    "):
+        x, y = line.split("-")
+        cave_set[x] += [y]
+        cave_set[y] += [x]
+
+    return cave_set
