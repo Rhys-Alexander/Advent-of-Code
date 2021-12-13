@@ -25,19 +25,16 @@ def getCode(inpt):
             if cood[dim] > val:
                 coods[i][dim] = val - (cood[dim] - val)
 
-    grid = [
-        [[x, y] for x in range(max(x[0] for x in coods) + 1)]
-        for y in range(max(y[1] for y in coods) + 1)
-    ]
-    for line_i, line in enumerate(grid):
-        for cood_i, cood in enumerate(line):
-            if cood in coods:
-                grid[line_i][cood_i] = "#"
-            else:
-                grid[line_i][cood_i] = " "
-    for line in grid:
+    grid = []
+    for y in range(max(y[1] for y in coods) + 1):
+        line = []
+        for x in range(max(x[0] for x in coods) + 1):
+            dot = "#" if [x, y] in coods else " "
+            line.append(dot)
+        grid.append(line)
         print(line)
-    return len(set(tuple(cood) for cood in coods))
+
+    return grid
 
 
-print(getCode(day13()))
+getCode(day13())
