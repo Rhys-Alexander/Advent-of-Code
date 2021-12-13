@@ -17,7 +17,7 @@ print(sumFoldedDots(day13(), 1))
 
 
 # Part 2
-def getCode(inpt):
+def printCode(inpt):
     coods, instrs = inpt
     for x_or_y, val in instrs:
         dim = 0 if x_or_y == "x" else 1
@@ -25,16 +25,12 @@ def getCode(inpt):
             if cood[dim] > val:
                 coods[i][dim] = val - (cood[dim] - val)
 
-    grid = []
     for y in range(max(y[1] for y in coods) + 1):
-        line = []
+        line = ""
         for x in range(max(x[0] for x in coods) + 1):
-            dot = "#" if [x, y] in coods else " "
-            line.append(dot)
-        grid.append(line)
+            dot = "\u2588" if [x, y] in coods else " "
+            line += dot
         print(line)
 
-    return grid
 
-
-getCode(day13())
+printCode(day13())
