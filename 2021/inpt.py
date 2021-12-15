@@ -4507,6 +4507,8 @@ def day13():
 
 
 def day14():
+    from collections import defaultdict
+
     inpt = """HBCHSNFFVOBNOFHFOBNO
 
     HF -> O
@@ -4609,27 +4611,12 @@ def day14():
     HP -> V
     OC -> V
     HK -> F"""
-    # inpt = """NNCB
-
-    # CH -> B
-    # HH -> N
-    # CB -> H
-    # NH -> C
-    # HB -> C
-    # HC -> B
-    # HN -> C
-    # NN -> C
-    # BH -> H
-    # NC -> B
-    # NB -> B
-    # BN -> B
-    # BB -> N
-    # BC -> B
-    # CC -> N
-    # CN -> C"""
     template = [x for x in inpt.split("\n")[0]]
-    pairs = dict()
-    for x in inpt.split("\n\n")[1].split("\n"):
-        pairs[x.split("->")[0].strip()] = x.split("->")[1].strip()
+    template = ["".join(x) for x in zip(template, template[1:])]
+    template = defaultdict(int, {x: template.count(x) for x in template})
+    rules = {
+        x.split("->")[0].strip(): x.split("->")[1].strip()
+        for x in inpt.split("\n\n")[1].split("\n")
+    }
 
-    return template, pairs
+    return template, rules
