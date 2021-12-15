@@ -1,7 +1,7 @@
 from inpt import day14
 from collections import defaultdict
 
-# try with Counter
+# TODO try with Counter
 
 
 def polymerization(inpt, steps):
