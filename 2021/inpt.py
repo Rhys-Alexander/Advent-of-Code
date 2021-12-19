@@ -4732,6 +4732,8 @@ def day16():
 
 def day17():
     inpt = "target area: x=94..151, y=-156..-103"
-    # inpt.split('=')
-    x, y = (94, 151), (-156, -103)
-    return x, y
+    x_area, y_area = [
+        tuple(int(pos) for pos in area.strip(", y").split(".."))
+        for area in inpt.split("=")[1:]
+    ]
+    return x_area, y_area
