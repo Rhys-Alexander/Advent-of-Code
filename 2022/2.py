@@ -10,3 +10,13 @@ def getTotalScore():
 
 
 print(getTotalScore())
+
+# Part 2
+def getTotalScoreFromOutcome():
+    return sum(
+        SCORES[OUTCOMES[opp][SCORES[outcome] - 1]] + (SCORES[outcome] - 1) * 3
+        for opp, outcome in (line.split() for line in open("2022/2.txt"))
+    )
+
+
+print(getTotalScoreFromOutcome())
