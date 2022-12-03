@@ -1,6 +1,6 @@
-import string
+from string import ascii_letters
 
-PRIORITY = {letter: i + 1 for i, letter in enumerate(string.ascii_letters)}
+PRIORITY = {letter: i + 1 for i, letter in enumerate(ascii_letters)}
 
 # Part 1
 def getPrioritySum():
