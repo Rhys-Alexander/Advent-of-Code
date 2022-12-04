@@ -1,6 +1,6 @@
 from re import split as re_split
 
-lines = [[int(a) for a in re_split(",|-", line.strip())] for line in open("2022/4.txt")]
+lines = [[int(a) for a in re_split(",|-", line)] for line in open("2022/4.txt")]
 
 # Part 1
 print(
