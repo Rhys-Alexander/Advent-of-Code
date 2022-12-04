@@ -12,3 +12,10 @@ def getEnvelopingLines():
 
 
 print(getEnvelopingLines())
+
+# Part 2
+def getOverlappingLines():
+    return sum(1 for l in lines if l[1] >= l[2] and l[0] <= l[3])
+
+
+print(getOverlappingLines())
