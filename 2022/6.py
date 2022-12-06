@@ -7,3 +7,5 @@ def getMarker(l):
 
 # Part 1
 print(getMarker(4))
+# Part 2
+print(getMarker(14))
