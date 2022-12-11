@@ -31,3 +31,12 @@ def getDirSize(dir):
 
 # Part 1
 print(sum(getDirSize(key) for key in dirs.keys() if getDirSize(key) <= 100000))
+
+# Part 2
+print(
+    min(
+        getDirSize(key)
+        for key in dirs.keys()
+        if getDirSize(key) >= (getDirSize("/") - 40000000)
+    )
+)
