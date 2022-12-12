@@ -29,3 +29,6 @@ def getMonkeyBusiness(rounds, div=1):
 
 # Part 1
 print(getMonkeyBusiness(20, 3))
+
+# Part 2
+print(getMonkeyBusiness(10000))
