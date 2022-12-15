@@ -1,4 +1,4 @@
-import collections
+from collections import deque
 
 grid = [
     [ord(char) for char in line.strip()] for line in open("2022/12.txt").readlines()
@@ -14,11 +14,10 @@ for y, row in enumerate(grid):
             goal = (x, y)
         if start and goal:
             break
-# print(start, goal, grid)
 
 
 def bfs(start):
-    queue = collections.deque([[start]])
+    queue = deque([[start]])
     seen = set([start])
     while queue:
         path = queue.popleft()
