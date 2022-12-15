@@ -38,3 +38,18 @@ def bfs(start):
 
 # Part 1
 print(bfs(startCood))
+
+# Part 2
+print(
+    min(
+        filter(
+            lambda item: item is not None,
+            [
+                bfs((x, y))
+                for y, row in enumerate(grid)
+                for x, col in enumerate(row)
+                if col == 97
+            ],
+        )
+    )
+)
